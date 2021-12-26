@@ -4,6 +4,8 @@ import type { AsyncReturnType } from "./async-return-type"
 
 type UserResponse = Endpoints["GET /users/{username}"]["response"]
 
+export type UserProp = keyof { [x: string]: UserResponse["data"] }
+
 export async function getGithubUser(username: string) {
     const { request } = new Octokit()
     const response: UserResponse = await request("GET /users/{username}", {
